@@ -49,9 +49,10 @@ public class OpenTerminalHereAction extends AnAction {
         CommandExecutor executor = null;
         if (SystemInfo.isMac) {
             executor = new MacExecutor(targetPath);
-        }
-        else if (SystemInfo.isWindows) {
+        } else if (SystemInfo.isWindows) {
             executor = new WinExecutor(targetPath);
+        } else if (SystemInfo.isLinux) {
+            executor = new LinuxExecutor(targetPath);
         }
 
         if (executor == null) {
